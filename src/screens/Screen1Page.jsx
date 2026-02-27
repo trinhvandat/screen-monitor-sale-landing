@@ -3,9 +3,9 @@ import './screen1.css';
 
 const scarcityData = [
   { title: 'Anh Quân (Cầu Giấy) vừa gọi tư vấn', subtitle: 'Vừa xong', initial: 'AQ' },
-  { title: 'Có 8 người đang xem sản phẩm này', subtitle: 'Trực tiếp', initial: '👁️' },
+  { title: 'Có 8 người đang xem sản phẩm này', subtitle: 'Trực tiếp', initial: 'EYE' },
   { title: 'Minh Trang vừa nhắn tin qua Zalo', subtitle: '2 phút trước', initial: 'MT' },
-  { title: 'Một khách từ Đà Nẵng vừa chốt cọc', subtitle: 'Chờ xác nhận', initial: '🚀' },
+  { title: 'Một khách từ Đà Nẵng vừa chốt cọc', subtitle: 'Chờ xác nhận', initial: 'ROCKET' },
   { title: 'Hà Nam vừa nhắn tin hỏi về máy', subtitle: '4 phút trước', initial: 'HN' }
 ];
 
@@ -159,7 +159,23 @@ export default function Screen1Page() {
       const data = scarcityData[currentScarcityIndex];
       toastTitle.textContent = data.title;
       toastSubtitle.textContent = data.subtitle;
-      avatarInitial.textContent = data.initial;
+
+      if (data.initial === 'EYE') {
+        avatarInitial.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        `;
+      } else if (data.initial === 'ROCKET') {
+        avatarInitial.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        `;
+      } else {
+        avatarInitial.textContent = data.initial;
+      }
 
       scarcityToast.classList.remove('hidden', 'toast-out');
       scarcityToast.classList.add('toast-in');
@@ -298,7 +314,7 @@ export default function Screen1Page() {
                     href="https://zalo.me/0974378886"
                     target="_blank"
                     rel="noreferrer"
-                    className="btn-clicky flex-[1.5] cursor-pointer rounded-2xl bg-[#f59e0b] px-8 py-4 text-center text-lg font-black text-white shadow-clicky transition-all hover:bg-amber-600"
+                    className="btn-clicky flex-[1.5] cursor-pointer rounded-2xl bg-accent px-8 py-4 text-center text-lg font-black text-white shadow-clicky transition-all hover:bg-orange-600"
                   >
                     XEM VIDEO TEST MÁY
                   </a>
@@ -313,8 +329,12 @@ export default function Screen1Page() {
 
               <div id="gallery" className="reveal lg:col-span-6">
                 <div className="grid h-[450px] grid-cols-4 grid-rows-4 gap-3">
-                  <div className="group relative col-span-4 row-span-3 overflow-hidden rounded-3xl border border-brand-100 bg-slate-100 shadow-premium">
-                    <div className="absolute inset-0 flex items-center justify-center bg-white px-10 text-center text-xs italic text-slate-400">
+                  <div className="group relative col-span-4 row-span-3 overflow-hidden rounded-[2rem] border border-brand-100 bg-slate-50 shadow-premium transition-all duration-500 hover:shadow-2xl">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/50 backdrop-blur-[2px] px-10 text-center">
+                      <svg className="mb-4 h-12 w-12 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <p className="text-sm font-bold italic text-slate-400">Đang cập nhật ảnh thực tế tại kho...</p>
                       <span className="sr-only">Ảnh thực tế tại kho</span>
                     </div>
                     <div className="absolute left-4 top-4 rounded-full bg-brand-900/80 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
@@ -348,7 +368,7 @@ export default function Screen1Page() {
         <section id="compare" className="bg-brand-50/50 py-20">
           <div className="mx-auto max-w-6xl px-4 md:px-6">
             <div className="reveal mb-12 text-center">
-              <h2 className="mb-4 text-3xl font-black tracking-tight md:text-4xl">Lựa chọn thông minh cho công việc</h2>
+              <h2 className="screen1-vn-heading mb-4 text-3xl font-black tracking-tight md:text-4xl">Lựa chọn thông minh cho công việc</h2>
               <p className="font-medium text-slate-500">Đừng chỉ nhìn vào giá, hãy nhìn vào giá trị lâu dài.</p>
             </div>
 
@@ -395,7 +415,7 @@ export default function Screen1Page() {
               <div className="flex flex-col rounded-[2.5rem] border border-slate-200 bg-slate-100/50 p-8 opacity-80">
                 <div className="mb-6">
                   <h3 className="mb-1 text-2xl font-bold italic text-slate-500">Màn Gaming/Phổ thông</h3>
-                  <p className="text-sm font-bold uppercase text-slate-400">Cùng tầm giá (Mới)</p>
+                  <p className="text-sm font-bold uppercase text-slate-500">Cùng tầm giá (Mới)</p>
                 </div>
                 <ul className="mb-8 flex-1 space-y-5">
                   <li className="flex items-start gap-3 italic text-slate-500">
@@ -424,7 +444,7 @@ export default function Screen1Page() {
                   </li>
                 </ul>
                 <div className="border-t border-slate-200 pt-6">
-                  <p className="text-2xl font-bold italic text-slate-400">~7-8 triệu</p>
+                  <p className="text-2xl font-bold italic text-slate-500">~7-8 triệu</p>
                 </div>
               </div>
             </div>
@@ -434,7 +454,7 @@ export default function Screen1Page() {
         <section id="faq" className="bg-white py-20">
           <div className="mx-auto max-w-3xl px-4 md:px-6">
             <div className="reveal mb-12 text-center">
-              <h2 className="mb-4 text-3xl font-black italic tracking-tight">Giải đáp thắc mắc</h2>
+              <h2 className="screen1-vn-heading mb-4 text-3xl font-black italic tracking-tight">Giải đáp thắc mắc</h2>
               <p className="font-medium text-slate-500">Tất cả những gì bạn cần biết trước khi sở hữu</p>
             </div>
 
@@ -501,16 +521,16 @@ export default function Screen1Page() {
               </h2>
               <div className="mx-auto max-w-2xl rounded-[3rem] border border-white/20 bg-white/10 p-8 shadow-2xl backdrop-blur-md">
                 <p className="mb-2 text-sm font-bold uppercase tracking-widest text-slate-300">Giá chốt nhanh hôm nay</p>
-                <p className="mb-6 text-6xl font-black italic text-[#f59e0b] md:text-7xl">7.500k</p>
+                <p className="mb-6 text-6xl font-black italic text-accent md:text-7xl">7.500k</p>
                 <div className="mb-10 flex flex-wrap justify-center gap-6 text-sm font-semibold">
                   <span className="flex items-center gap-2">
-                    <svg className="h-5 w-5 text-[#f59e0b]" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-5 w-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
                     </svg>
                     Fullbox nguyên thùng
                   </span>
                   <span className="flex items-center gap-2">
-                    <svg className="h-5 w-5 text-[#f59e0b]" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-5 w-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
                     </svg>
                     Free ship nội thành HN
@@ -520,12 +540,12 @@ export default function Screen1Page() {
                   href="https://zalo.me/0974378886"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-clicky inline-block w-full cursor-pointer rounded-2xl bg-[#f59e0b] py-5 text-xl font-black text-white shadow-clicky transition-all hover:bg-amber-600"
+                  className="btn-clicky inline-block w-full cursor-pointer rounded-2xl bg-accent py-5 text-xl font-black text-white shadow-clicky transition-all hover:bg-orange-600"
                 >
                   LIÊN HỆ CHỐT NGAY QUA ZALO
                 </a>
               </div>
-              <p className="mt-6 text-xs font-bold uppercase tracking-widest text-slate-400">Thời gian ưu đãi có hạn do số lượng máy chỉ có 01</p>
+              <p className="mt-6 text-xs font-bold uppercase tracking-widest text-slate-500">Thời gian ưu đãi có hạn do số lượng máy chỉ có 01</p>
             </div>
           </div>
         </section>
@@ -543,7 +563,7 @@ export default function Screen1Page() {
               />
             </svg>
           </div>
-          <p className="mb-4 text-sm font-bold uppercase tracking-widest text-slate-400">Monitor Hà Nội - Uy tín tạo niềm tin</p>
+          <p className="mb-4 text-sm font-bold uppercase tracking-widest text-slate-500">Monitor Hà Nội - Uy tín tạo niềm tin</p>
           <p className="mb-8 max-w-md text-[11px] italic text-slate-600">
             Địa chỉ kho: Phố Vọng, Hai Bà Trưng, Hà Nội. Vui lòng gọi điện trước khi qua xem máy để được tiếp đón chu đáo nhất.
           </p>
@@ -567,7 +587,7 @@ export default function Screen1Page() {
             <p id="toast-title" className="truncate text-xs font-black leading-tight tracking-tight text-brand-900">
               Hà Nam vừa nhắn tin hỏi máy
             </p>
-            <p id="toast-subtitle" className="mt-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-400">
+            <p id="toast-subtitle" className="mt-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-500">
               Cách đây 4 phút
             </p>
           </div>
