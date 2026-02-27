@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd /Users/leonard/.claude/plugins/cache/ui-ux-pro-max-skill/ui-ux-pro-max/2.0.1 && python3 skills/ui-ux-pro-max/scripts/search.py \\\"ecommerce consumer electronics product landing page mode...",
+  "error": "Exit code 2\n/opt/homebrew/bin/python3.10: can't open file '/Users/leonard/.claude/plugins/cache/ui-ux-pro-max-skill/ui-ux-pro-max/2.0.1/skills/ui-ux-pro-max/scripts/search.py': [Errno 2] No such file or directory\n\n/opt/homebrew/bin/python3.10: can't open file '/Users/leonard/.claude/plugins/cache/ui-ux-pro-max-skill/ui-ux-pro-max/2.0.1/skills/ui-ux-pro-max/scripts/search.py': [Errno 2] No such file or directory",
+  "timestamp": "2026-02-25T00:25:21.760Z",
+  "retry_count": 1
+}
